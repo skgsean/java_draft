@@ -1,0 +1,64 @@
+/*生成验证码
+内容：可以是小写字母，也可以是大写字母，还可以是数字
+规则：
+  	长度为5
+  	内容中是四位字母，1位数字。
+  	其中数字只有1位，但是可以出现在任意的位置。
+ */
+
+import java.util.Random;
+
+public class ChaptCha {
+    public static void main(String[] args) {
+        System.out.println("生成5位的验证码");
+        String [] chaptCha = new String[5];
+        char [] alpha = {'a','b','c','d','e','f','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        char [] number = {'0','1','2','3','4','5','6','7','8','9'};
+
+        Random r = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 4; i++) {
+            char ch = alpha[r.nextInt(alpha.length)];
+            sb.append(ch);
+
+        }
+        for (int i = 0; i < 1; i++) {
+           sb.append(number[r.nextInt(number.length)]);
+        }
+        //System.out.println(sb.toString());
+        String result = sb.toString();
+        geneNew(result.toCharArray());
+    }
+
+    // 传入一个字符串，然后产生一个打乱的字符串
+    public static void geneNew(char[] str) {
+        Random r = new Random();
+        int [] newIndex = new int[str.length];
+        for(int n = 0; n < newIndex.length;n++){
+            newIndex[n] = -1; // 把每个元素都初始化为-1
+        }
+        for (int i = 0; i < str.length; i++) {
+            while(true){
+                int j = r.nextInt(str.length);
+                //System.out.println(j);
+                if(!exist(j,newIndex)){
+                    newIndex[i] = j; // 这里需要判断新生成出来的j是不是已经存在，j,newIndex[i]
+                    break;
+                }
+            }
+        }
+        for (int k = 0; k < str.length; k++) {
+            System.out.print(str[newIndex[k]]);
+        }
+    }
+
+    public static boolean exist(int j, int [] newIndex){
+        for (int i = 0; i < newIndex.length; i++) {
+            if(newIndex[i] == j){
+                return true;
+            }
+        }
+        return false;
+    }
+}
