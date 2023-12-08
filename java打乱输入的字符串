@@ -1,0 +1,43 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class shuttleALpha {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please input some words: ");
+        String inputStr = sc.next();
+        char [] strArr = inputStr.toCharArray();
+        geneNew(strArr);
+    }
+
+    // 传入一个字符串，然后产生一个打乱的字符串
+    public static void geneNew(char[] str) {
+        Random r = new Random();
+        int [] newIndex = new int[str.length];
+        for(int n = 0; n < newIndex.length;n++){
+            newIndex[n] = -1; // 把每个元素都初始化为-1
+        }
+        for (int i = 0; i < str.length; i++) {
+            while(true){
+                int j = r.nextInt(str.length);
+                System.out.println(j);
+                if(!exist(j,newIndex)){
+                    newIndex[i] = j; // 这里需要判断新生成出来的j是不是已经存在，j,newIndex[i]
+                    break;
+                }
+            }
+        }
+        for (int k = 0; k < str.length; k++) {
+            System.out.print(str[newIndex[k]]);
+        }
+    }
+
+    public static boolean exist(int j, int [] newIndex){
+        for (int i = 0; i < newIndex.length; i++) {
+            if(newIndex[i] == j){
+                return true;
+            }
+        }
+        return false;
+    }
+}
