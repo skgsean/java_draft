@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class abba {
+    public static void main(String[] args) {
+        //请定义一个方法用于判断一个字符串是否是对称的字符串，并在主方法中测试方法。例如："abcba"、"上海自来水来自海上"均为对称字符串。
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入字符串：");
+        String inputStr = sc.next();
+        System.out.println(inputStr);
+        StringBuilder sb = new StringBuilder(inputStr);
+        String sbNew = sb.toString();
+        StringBuilder reSb = sb.reverse();
+        String reSbNew = reSb.toString();
+        System.out.println("反转后：" + reSb);
+        if(sbNew.equals(reSbNew)){
+            System.out.println("对称");
+        }else{
+            System.out.println("不对称。");
+        }
+    }
+}
