@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class RomaChange {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String [] romaNum = {"I","II","III","IV","V","VI","VII","VIII","IX"};
+        while(true){
+            System.out.println("请输入不包含0的纯数字：");
+            String inputStr = sc.next();
+            StringBuilder sb = new StringBuilder(inputStr);
+            if(checkNum(inputStr)){
+                for(int i = 0; i < sb.length();i++){
+                    System.out.print(romaNum[sb.charAt(i)-49] + " ");
+                }
+                break;
+            }
+        }
+    }
+
+    public static boolean checkNum(String inputStr){
+        boolean flag = false;
+        StringBuilder sb = new StringBuilder(inputStr);
+        for(int i = 0; i<sb.length();i++){
+            if(sb.charAt(i) <= '0' || sb.charAt(i) > '9'){
+                return false;
+            }
+        }
+        return true;
+    }
+}
