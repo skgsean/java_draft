@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+public class arrayListTest {
+    public static void main(String[] args) {
+        ArrayList<Integer> array = new ArrayList<Integer>();
+        array.add(1);
+        array.add(2);
+        array.add(3);
+
+        System.out.println(array.size());
+        System.out.println("array: " + array);
+        System.out.print("[");
+        for(int i = 0; i<array.size();i++){
+            if(i == array.size()-1){
+                System.out.print(array.get(i));
+            }else{
+                System.out.print(array.get(i) + ",");
+            }
+        }
+        System.out.println("]");
+    }
+}
