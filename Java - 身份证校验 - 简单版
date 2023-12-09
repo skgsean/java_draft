@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+
+public class IdCheck {
+    public static void main(String[] args) {
+        //规则为：号码为18位，不能以数字0开头，前17位只可以是数字，最后一位可以是数字或者大写字母X。
+        while(checkID()){
+            System.out.println("身份证号码合法。");
+            break;
+        }
+    }
+
+    public static boolean checkID(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入身份证号码：");
+        String idStr = sc.next();
+        char [] idArr = idStr.toCharArray();
+        System.out.println("您输入的是：" + idStr);
+        if(idArr[0] == '0'){
+            System.out.println("数字不合法.");
+            return false;
+        }
+
+        for(int i = 1; i< 17; i++){
+            if(idArr[i] < '0' || idArr[i] > '9'){
+                System.out.println("数字不合法.");
+                return false;
+            }
+        }
+        //System.out.println(idArr[17]);
+        if(idArr[17] != 'x'){
+            if(idArr[17] >= '0' && idArr[17] <= '9'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+}
