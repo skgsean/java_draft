@@ -1,0 +1,73 @@
+public class UserObject {
+    private int id;
+    private String username;
+    private String password;
+
+    public UserObject() {
+    }
+
+    public UserObject(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class UserTest {
+    public static void main(String[] args) {
+        ArrayList<UserObject> userList = new ArrayList<>();
+        UserObject u1 = new UserObject(100,"zhangsan","123456");
+        UserObject u2 = new UserObject(101,"lisi","123456");
+        UserObject u3 = new UserObject(102,"wangwu","123456");
+
+        userList.add(u1);
+        userList.add(u2);
+        userList.add(u3);
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入用户id：");
+        int inputId = sc.nextInt();
+        System.out.println(checkId(inputId,userList));
+
+    }
+
+    public static boolean checkId(int inputId,ArrayList<UserObject> userList ){
+        for (int i = 0; i < userList.size(); i++) {
+            if(inputId == (userList.get(i).getId())){
+                System.out.println(userList.get(i).getUsername());
+                System.out.println(userList.get(i).getPassword());
+                return true;
+            }
+        }
+        return false;
+    }
+}
