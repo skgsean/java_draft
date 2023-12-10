@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StudentList {
+    public static void main(String[] args) {
+        ArrayList<Student> stuList = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            Student s = new Student();
+            System.out.println("请输入姓名：");
+            String sName = sc.next();
+            System.out.println("请输入年龄：");
+            int sAge = sc.nextInt();
+            s.setName(sName);
+            s.setAge(sAge);
+            stuList.add(s);
+        }
+
+        for (int i = 0; i < stuList.size(); i++) {
+            Student stu = stuList.get(i);
+            System.out.println("Student name: " + stu.getName() + ", Student age: " + stu.getAge());
+        }
+    }
+}
