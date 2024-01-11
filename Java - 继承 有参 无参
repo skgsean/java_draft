@@ -1,0 +1,42 @@
+package com.itheima.a08oopextendsdemo8;
+
+public class Person {
+    String name;
+    int age;
+
+    public Person() {
+        System.out.println("父类的无参构造");
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+
+package com.itheima.a08oopextendsdemo8;
+
+public class Student extends Person{
+    public Student(){
+        // 子类构造方法中隐藏了super()去访问父类的无参构造
+        super(); // 这里不写的话，虚拟机会补上
+        System.out.println("子类的无参构造");
+    }
+
+    // 在继承父类的时候，把有参构造拿过来
+    public Student(String name, int age){
+        super(name,age);
+    }
+}
+
+package com.itheima.a08oopextendsdemo8;
+
+public class Test {
+    public static void main(String[] args) {
+        Student s = new Student("zhangsan",23);
+        System.out.println(s.name + " " + s.age);
+    }
+}
+
+
